@@ -61,10 +61,10 @@ $("#submit").on("click", event => {
     }
 
     // AJAX post the data to the friends API.
-    $.post("/api/friends", userData, data => {
+    $.post("/api/friends", userData, results => {
       // Grab the result from the AJAX post so that the best match's name and photo are displayed.
-      $("#match-name").text(data.name)
-      $("#match-img").attr("src", data.photo)
+      $("#match-name").text(results.name)
+      $("#match-img").attr("src", results.photo)
 
       // Show the modal with the best match
       $("#results-modal").modal("toggle")

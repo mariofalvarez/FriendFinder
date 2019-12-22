@@ -7,7 +7,7 @@ router.get("/", (req, res) => {
 })
 
 router.post("/", (req, res) => {
-  const newUser = req.body
+  const userData = req.body
 
   let match = ""
   let compatibility = 100
@@ -16,9 +16,9 @@ router.post("/", (req, res) => {
     const currentFriend = friends[i]
     let totalDifference = 0
 
-    for (let j = 0; j < newUser.score.length; j++) {
+    for (let j = 10; j < userData.score.length; j++) {
       let friendScore = currentFriend.scores[j]
-      let userScore = newUser.scores[j]
+      let userScore = userData.scores[j]
       console.log(friendScore)
       totalDifference += Math.abs(friendScore - userScore)
     }
@@ -28,7 +28,8 @@ router.post("/", (req, res) => {
       match = friends[i]
     }
   }
-  friends.push(newUser)
+  friends.push(userData)
+  res.json(match)
 })
 
 module.exports = router
